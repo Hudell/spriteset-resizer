@@ -84,6 +84,8 @@ func resize_image():
 	var y_frames = int(loaded_image_height) / height
 	resized_image_width = x_frames * target_width
 	resized_image_height = y_frames * target_height
+	
+	var bottom_anchor = %BottomAnchor.button_pressed
 
 	var new_img = Image.create(resized_image_width, resized_image_height, false, loaded_image_format)
 	
@@ -97,14 +99,20 @@ func resize_image():
 				continue
 			var y_index = y / height
 			
-			var region = Rect2i(x, y, width, height)
 			var new_x = x_index * target_width
 			var new_y = y_index * target_height
-			var x_offset = (target_width - width) / 2
-			var y_offset = (target_height - height) / 2
+			var x_offset = max(0, (target_width - width) / 2)
+			var y_offset = max(0, (target_height - height))
 			
 			var target_x = new_x + x_offset
 			var target_y = new_y + y_offset
+
+			var origin_width = min(target_width, width)
+			var origin_height = min(target_height, height)
+			var origin_x = max(x, x + (width - target_width) / 2)
+			var origin_y_offset = (height - target_height) / 2 if bottom_anchor else (height - target_height)
+			var origin_y = max(y, y + origin_y_offset)
+			var region = Rect2i(origin_x, origin_y, origin_width, origin_height)
 			
 			new_img.blit_rect(img, region, Vector2i(target_x, target_y))
 	
