@@ -103,6 +103,8 @@ func resize_image():
 			var new_y = y_index * target_height
 			var x_offset = max(0, (target_width - width) / 2)
 			var y_offset = max(0, (target_height - height))
+			if target_height > height && !bottom_anchor:
+				y_offset /= 2
 			
 			var target_x = new_x + x_offset
 			var target_y = new_y + y_offset
