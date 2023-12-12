@@ -148,3 +148,7 @@ func _on_save_dialog_file_selected(path):
 		show_error("Failed to save image")
 	else:
 		%SuccessDialog.popup_centered()
+
+
+func _on_button_4_pressed():
+	$UpdateGridTimer.start(0)

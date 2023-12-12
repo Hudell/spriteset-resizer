@@ -16,7 +16,7 @@ script = ExtResource("1_0hc4u")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 44.0
+offset_bottom = 80.0
 grow_horizontal = 2
 
 [node name="Button" type="Button" parent="Panel"]
@@ -25,15 +25,23 @@ offset_left = 8.0
 offset_top = 7.0
 offset_right = 127.0
 offset_bottom = 38.0
-text = "Load Spriteset"
+text = "Load Image"
+
+[node name="Button4" type="Button" parent="Panel"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 41.0
+offset_right = 127.0
+offset_bottom = 72.0
+text = "Reload"
 
 [node name="LoadedGridX" type="SpinBox" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 134.0
-offset_top = 7.0
-offset_right = 217.063
-offset_bottom = 38.0
+offset_left = 160.0
+offset_top = 41.0
+offset_right = 243.063
+offset_bottom = 72.0
 max_value = 512.0
 step = 8.0
 value = 32.0
@@ -44,10 +52,10 @@ select_all_on_focus = true
 [node name="LoadedGridY" type="SpinBox" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 217.0
-offset_top = 7.0
-offset_right = 300.063
-offset_bottom = 38.0
+offset_left = 243.0
+offset_top = 41.0
+offset_right = 326.063
+offset_bottom = 72.0
 max_value = 512.0
 step = 8.0
 value = 32.0
@@ -58,10 +66,10 @@ select_all_on_focus = true
 [node name="TargetGridX" type="SpinBox" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 428.0
-offset_top = 7.0
-offset_right = 511.063
-offset_bottom = 38.0
+offset_left = 347.0
+offset_top = 41.0
+offset_right = 430.063
+offset_bottom = 72.0
 max_value = 512.0
 step = 8.0
 value = 64.0
@@ -72,10 +80,10 @@ select_all_on_focus = true
 [node name="TargetGridY" type="SpinBox" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 511.0
-offset_top = 7.0
-offset_right = 594.063
-offset_bottom = 38.0
+offset_left = 430.0
+offset_top = 41.0
+offset_right = 513.063
+offset_bottom = 72.0
 max_value = 512.0
 step = 8.0
 value = 64.0
@@ -85,19 +93,35 @@ select_all_on_focus = true
 
 [node name="Button2" type="Button" parent="Panel"]
 layout_mode = 1
-offset_left = 598.0
-offset_top = 7.0
-offset_right = 717.0
-offset_bottom = 38.0
+offset_left = 686.0
+offset_top = 9.0
+offset_right = 805.0
+offset_bottom = 40.0
 text = "Resize"
 
 [node name="Button3" type="Button" parent="Panel"]
 layout_mode = 1
-offset_left = 729.0
-offset_top = 7.0
-offset_right = 848.0
-offset_bottom = 38.0
+offset_left = 686.0
+offset_top = 41.0
+offset_right = 805.0
+offset_bottom = 72.0
 text = "Save Image"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 12.0
+offset_right = 263.0
+offset_bottom = 35.0
+text = "Original Grid:"
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 12.0
+offset_right = 450.0
+offset_bottom = 35.0
+text = "Desired Grid:"
 
 [node name="FileDialog" type="FileDialog" parent="."]
 unique_name_in_owner = true
@@ -123,11 +147,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 44.0
-offset_bottom = 22.0
+offset_top = 80.0
+offset_bottom = 40.0
 grow_horizontal = 2
 scale = Vector2(2, 2)
-metadata/_edit_use_anchors_ = true
 
 [node name="ImagePreview" type="TextureRect" parent="ScrollContainer"]
 unique_name_in_owner = true
@@ -150,13 +173,15 @@ dialog_text = "Image saved successfully"
 [node name="BottomAnchor" type="CheckBox" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1003.0
-offset_top = 9.0
-offset_right = 1148.0
-offset_bottom = 40.0
+offset_left = 525.0
+offset_top = 41.0
+offset_right = 670.0
+offset_bottom = 72.0
+tooltip_text = "Load / Save the sprite to the bottom of the frame instead of the center."
 text = "Bottom anchor"
 
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="value_changed" from="Panel/LoadedGridX" to="." method="_on_loaded_grid_x_value_changed"]
 [connection signal="value_changed" from="Panel/LoadedGridY" to="." method="_on_loaded_grid_y_value_changed"]
 [connection signal="pressed" from="Panel/Button2" to="." method="_on_button_2_pressed"]
